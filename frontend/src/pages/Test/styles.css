@@ -1,0 +1,122 @@
+.home-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.home-container section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-container section.logo {   
+    background: #03000a;
+    width: 40%;
+}
+
+.home-container section.logo div.logo-style {
+    display: flex;
+    align-items: center;
+}
+
+.home-container section.logo div.logo-style strong {
+    font-weight: bold;
+    font-size: 80px;
+    color: #FFF;
+    letter-spacing: 10px;
+    /*-webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #FFF;*/
+}
+
+.home-container section.info {
+    display: inline-block;
+    width: 100%;
+    margin: 32px auto;
+    background: #000 url('../../assets/30.jpg') no-repeat;
+    background-size: cover;
+}
+
+.home-container section.info header {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+}
+
+.home-container section.info header span a {
+    color: #FFF;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 400;
+    transition: opacity 0.2s;
+}
+
+.home-container section.info header span a:hover {
+    opacity: 0.8;
+}
+
+.home-container section.info header span.header-links {
+    margin-left: 50px;
+}
+
+.home-container section.info header span.logon-buttons {
+    margin-left: auto;
+}
+
+.home-container section.info header span.logon-buttons a {
+    margin-right: 25px;
+}
+
+.home-container section.info section.info-elements {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 80px;
+    text-align: justify;
+    color: #FFF;
+}
+
+.home-container section.info section.info-elements strong {
+    width: 100%;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.home-container section.info section.info-elements p {
+    margin-top: 70px;
+    max-width: 600px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: auto;
+}
+
+.home-container section.info section.info-elements text {
+    width: 100%;
+}
+
+.home-container section.info section.info-elements text.company-email {
+    margin-top: 100px;
+}
+
+.home-container section.info section.info-elements div.social-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.home-container section.info section.info-elements div.social-media svg {
+    margin-left: 20px;
+}
+
+.home-container section.info section.info-elements div.social-media svg.first-icon {
+    margin-left: 0;
+}
+
