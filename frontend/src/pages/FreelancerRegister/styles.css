@@ -61,7 +61,7 @@
 }
 
 .freelancer-register-container section.info section.info-elements .content h1 {
-    margin-bottom: 30px;
+    margin-bottom: 14px;
     color: #0dc6ff;
     font-size: 35px;
 }
@@ -71,12 +71,31 @@
 }
 
 .freelancer-register-container section.info section.info-elements .content form input {
-    margin-bottom: 16px;
+    margin-top: 16px;
     padding: 0 24;
+}
+
+.freelancer-register-container section.info section.info-elements .content form input.failed-field {
+    border-color: red;
+}
+
+.freelancer-register-container section.info section.info-elements .content form span {
+    margin-bottom: 8px;
+    padding: 0 10px;
 }
 
 .freelancer-register-container section.info section.info-elements .content form .input-group {
     display: flex;
+}
+
+.freelancer-register-container section.info section.info-elements .content form .error-messages {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    color: red;
+    margin-bottom: 0 auto;
 }
 
 .freelancer-register-container section.info section.info-elements .content form .input-group input + input {

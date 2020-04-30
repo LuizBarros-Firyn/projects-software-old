@@ -71,12 +71,29 @@
 }
 
 .client-register-container section.info section.info-elements .content form input {
-    margin-bottom: 16px;
-    padding: 0 24;
+    margin-top: 16px;
+}
+
+.client-register-container section.info section.info-elements .content form input.failed-field {
+    border-color: red;
+}
+
+.client-register-container section.info section.info-elements .content form span {
+    margin-bottom: 8px;
+    padding: 0 10px;
 }
 
 .client-register-container section.info section.info-elements .content form .input-group {
     display: flex;
+}
+
+.client-register-container section.info section.info-elements .content form .error-messages {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    color: red;
 }
 
 .client-register-container section.info section.info-elements .content form .input-group input + input {

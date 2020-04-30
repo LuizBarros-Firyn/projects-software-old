@@ -1,36 +1,29 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react';
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+import { freelancerRegisterValidation } from '../../validators/YupValidations.js';
+import { freelancerRegisterInitialValues as initialValues } from '../../utils/constants'
 
 import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
 
 export default function FreelancerRegister() {
-    const[firstName, setFirstName] = useState('');
-    const[lastName, setLastName] = useState('');
-    const[age, setAge] = useState('');
-    const[ddd, setDdd] = useState('');
-    const[email, setEmail] = useState('');
-    const[phoneNumber, setPhoneNumber] = useState('');
-    const[cpf, setCpf] = useState('');
-    const[city, setCity] = useState('');
-    const[uf, setUf] = useState('');
-
-    async function handleFreelancerRegister(e){
-        e.preventDefault();
-
+    async function handleFreelancerRegister(values){
         const data = {
-            name: firstName.trim() + " " + lastName.trim(),
-            age,
-            phone: "55" + ddd + phoneNumber,
-            email,
+            name: values.firstName.trim() + " " + values.lastName.trim(),
+            login: values.login,
+            password: values.password,
+            age: values.age,
+            phone: '',
+            email: values.email,
             photo: '',
-            person_identifier: cpf,
-            company_name: '',
-            city,
-            uf,
-            isFreelancer: true,
+            person_identifier: values.cpf,
+            city: values.city,
+            uf: values.uf,
+            isFreelancer: true
         };
 
         try {
@@ -55,67 +48,71 @@ export default function FreelancerRegister() {
                 <section className="info-elements">
                     <div className="content">
                         <h1>Seja bem vindo, freelancer!</h1>
-                        <form onSubmit={handleFreelancerRegister}>
-                            <div className="input-group">
-                                <input 
-                                    placeholder="Primeiro Nome"
-                                    value={firstName}
-                                    onChange={e => setFirstName(e.target.value)}
-                                />
-                                <input 
-                                    placeholder="Ultimo Nome"
-                                    value={lastName}
-                                    onChange={e => setLastName(e.target.value)}
-                                />
-                            </div>
-                            <div className="input-group">
-                                <input 
-                                    // type="number"
-                                    placeholder="DDD"
-                                    style={{ width: 90 }}
-                                    value={ddd}
-                                    onChange={e => setDdd(e.target.value)}
-                                />                       
-                                <input 
-                                    placeholder="Numero de Telefone"
-                                    value={phoneNumber}
-                                    onChange={e => setPhoneNumber(e.target.value)}
-                                />
-                            </div>
-                            <div className="input-group">
-                                <input 
-                                        // type="number"
-                                        placeholder="Idade"
-                                        style={{ width: 120 }}
-                                        value={age}
-                                        onChange={e => setAge(e.target.value)}
-                                    />
-                                <input 
-                                    placeholder="E-mail"
-                                    value={email}
-                                    onChange={e => setEmail(e.target.value)}
-                                />
-                            </div>
-                            <input 
-                                placeholder="CPF"
-                                value={cpf}
-                                onChange={e => setCpf(e.target.value)}
-                            />
-                            <div className="input-group">
-                                <input 
-                                    placeholder="Cidade"
-                                    value={city}
-                                    onChange={e => setCity(e.target.value)}
-                                />
-                                <input 
-                                    placeholder="UF"
-                                    style={{ width: 80 }}
-                                    value={uf}
-                                    onChange={e => setUf(e.target.value)}
-                                />
-                            </div>
-                            <button className="button" type="submit">Cadastrar</button>
-                        </form>
+                        <Formik initialValues={initialValues} onSubmit={handleFreelancerRegister} validationSchema={freelancerRegisterValidation}>
+                            { props => {
+                                const {
+                                    touched, errors, isSubmitting
+                                } = props;
+
+                                return(
+                                    <Form autoComplete="off">
+                                        <div className="input-group">
+                                            <Field placeholder="Primeiro Nome" name="firstName" className={errors.firstName && touched.firstName && "failed-field"} />
+                                            <Field placeholder="Ultimo Nome" name="lastName" className={errors.lastName && touched.lastName && "failed-field"} />
+                                        </div>
+                                        <div className="error-messages">
+                                            <div className="left-field-error">
+                                                <ErrorMessage component="span" name="firstName" />
+                                            </div>
+                                            <div className="right-field-error">
+                                                <ErrorMessage component="span" name="lastName" />
+                                            </div>
+                                        </div>
+                                        <div className="input-group">
+                                            <Field placeholder="Login" name="login" className={errors.login && touched.login && "failed-field"} />                       
+                                            <Field placeholder="Senha" name="password" type="password" className={errors.password && touched.password && "failed-field"} />
+                                        </div>
+                                        <div className="error-messages">
+                                            <div className="left-field-error">
+                                                <ErrorMessage component="span" name="ddd" />
+                                            </div>
+                                            <div className="right-field-error">
+                                                <ErrorMessage component="span" name="phoneNumber" />
+                                            </div>
+                                        </div>
+                                        <div className="input-group">
+                                            <Field placeholder="Idade" style={{ width: 120 }} name="age" className={errors.age && touched.age && "failed-field"} />
+                                            <Field placeholder="E-mail" name="email" className={errors.email && touched.email && "failed-field"} />
+                                        </div>
+                                        <div className="error-messages">
+                                            <div className="left-field-error">
+                                                <ErrorMessage component="span" name="age" />
+                                            </div>
+                                            <div className="right-field-error">
+                                                <ErrorMessage component="span" name="email" />
+                                            </div>
+                                        </div>
+                                        <Field placeholder="CPF" name="cpf" className={errors.cpf && touched.cpf && "failed-field"} />
+                                        <div className="error-messages">
+                                            <ErrorMessage component="span" name="cpf" />
+                                        </div>
+                                        <div className="input-group">
+                                            <Field placeholder="Cidade" name="city" className={errors.city && touched.city && "failed-field"} />
+                                            <Field placeholder="UF" style={{ width: 80 }} name="uf" className={errors.uf && touched.uf && "failed-field"} />
+                                        </div>
+                                        <div className="error-messages">
+                                            <div className="left-field-message">
+                                                <ErrorMessage component="span" name="city" />
+                                            </div>
+                                            <div className="right-error-message">
+                                                <ErrorMessage component="span" name="uf" />
+                                            </div>
+                                        </div>
+                                        <button className="button" type="submit" disabled={isSubmitting}>Cadastrar</button>
+                                    </Form>
+                                )
+                            }}
+                        </Formik>
                     </div>
                 </section>
             </section>
