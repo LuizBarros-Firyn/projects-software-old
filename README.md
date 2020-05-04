@@ -34,12 +34,19 @@ Para rodar o projeto, você precisa ter o node na versão 12.16.3 (LTS) ou super
 ## Tecnologias Utilizadas
 
 1 - JavaScript
+
 2 - NodeJs
+
 3 - API RESTFUL
+
 4 - MongoDB(noSQL Server)
+
 5 - ReactJs
+
 6 - React-Native(futuramente)
+
 7 - HTML
+
 8 - CSS
 
 ## Metodologia
