@@ -5,7 +5,7 @@ Este projeto esta sendo desenvolvido como TCC para o curso Análise e Desenvolvi
 
 Estas instruções lhe auxiliarão a conseguir um clone funcional do projeto na sua máquina! Todos os commits entregam incrementações completas do sistema.
 
-### Pré=requisitos
+### Pré-requisitos
 
 Para rodar o projeto, você precisa ter o node na versão 12.16.3 (LTS) ou superior instalado em seu computador. É recomendável instalar o Node através do Chocolatey.
 
