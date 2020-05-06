@@ -25,6 +25,8 @@ Para rodar o projeto, você precisa ter o node na versão 12.16.3 (LTS) ou super
 
 7 - Vá até a pasta do projeto e execute 'yarn add' para adicionar as dependências do projeto.
 
+8 - Vá até a pasta backend/src, acesse o arquivo app.js e adicione uma URL de conexão com banco MongoDB. Por motivos de segurança, a URL de conexão com o banco original do projeto é privada. 
+
 ### Inicializando
 
 1 - Pelo PowerShell, vá até a pasta backend do projeto e execute o comando 'yarn dev' (sem aspas) para inicializar o backend da aplicação.
@@ -53,8 +55,6 @@ Para rodar o projeto, você precisa ter o node na versão 12.16.3 (LTS) ou super
 
 O desacoplamento de código possui vários benifícios comprovados, entre eles está a melhor organização de código e a facilidade de adicionar novos recursos e realizar a manutenção do sistema.
 
-O código esta sendo desenvolvido de maneira que o backend e o frontend estejam desacoplados. O Backend é uma API restful que pode ser consumida por diversos sistemas diferentes.
-
-Por ser uma API RESTFUL desacoplada, o backend só fornece dados, permitindo que seus dados sejam consumidos por vários possíveis fronts diferentes.
+O código esta sendo desenvolvido de maneira que o backend e o frontend estejam desacoplados. Permitindo que seus dados sejam consumidos por vários possíveis fronts diferentes.
 
 Esta metodologia permite que tanto a versão web quanto a versão mobile utilizem a mesma API, sendo necessárias apenas mudanças de frontend. Desta forma, concedendo agilidade e flexibilidade a aplicação.
