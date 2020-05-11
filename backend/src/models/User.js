@@ -12,7 +12,8 @@ const UserSchema = new mongoose.Schema({
     company_name: String,
     city: String,
     uf: String,
-    isFreelancer: Boolean // user type
+    is_freelancer: Boolean, // user type
+    techs: [String]
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -1,0 +1,64 @@
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import api from '../../../services/api';
+
+import { FiTerminal, FiPower } from 'react-icons/fi';
+
+import './styles.css';
+
+export default function OffersReview() {
+    const [projects, setProjects] = useState([]);
+    const userSession = JSON.parse(localStorage.getItem('userSession'));
+
+    const history = useHistory();
+
+    useEffect(() => {
+        if (userSession.user_is_freelancer) {
+            alert('Acesso não autorizado.');
+            history.push('/login');
+        }
+
+        api.get('projects', {
+            headers: {
+                user_id: userSession.user_id
+            }
+        }).then(response => {
+            setProjects(response.data);
+        });
+        
+    }, [history, userSession.user_is_freelancer, userSession.user_id]);
+
+    function handleLogout() {
+        localStorage.clear();
+
+        history.push('/login');
+    }
+
+    return(
+        <div className="offers-review-container">        
+            <header>
+                <div className="welcome-group">
+                    <FiTerminal size={40} color="#e02041" />
+                    <span>Bem vindo, {userSession.user_name}</span>
+                </div>
+                <Link className="button" to="/new_project" >
+                    Publicar um Projeto!
+                </Link>
+                <button onClick={handleLogout} type="button">
+                    <FiPower size={18} color="#E02041" />
+                </button>
+            </header>
+            <h1>Projetos Publicados</h1>
+            <ul>
+                {projects.map(project => (
+                    <li key={project._id}>
+                        <strong>NOME:</strong>
+                        <p>{project.title}</p>
+                        <strong>DESCRIÇÃO:</strong>
+                        <p>{project.description}</p>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}

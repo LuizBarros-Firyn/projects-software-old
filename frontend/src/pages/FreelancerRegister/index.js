@@ -3,7 +3,7 @@ import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { freelancerRegisterValidation } from '../../validators/YupValidations.js';
+import { freelancerRegisterValidation } from '../../validators/YupValidations';
 import { freelancerRegisterInitialValues as initialValues } from '../../utils/constants'
 
 import { FiArrowLeft } from 'react-icons/fi';
@@ -23,7 +23,8 @@ export default function FreelancerRegister() {
             person_identifier: values.cpf,
             city: values.city,
             uf: values.uf,
-            isFreelancer: true
+            isFreelancer: true,
+            techs: values.techs
         };
 
         try {
@@ -107,6 +108,10 @@ export default function FreelancerRegister() {
                                             <div className="right-error-message">
                                                 <ErrorMessage component="span" name="uf" />
                                             </div>
+                                        </div>
+                                        <Field placeholder="Tecnologias (separadas por virgula)" name="techs" className={errors.techs && touched.techs && "failed-field"} />
+                                        <div className="error-messages">
+                                            <ErrorMessage component="span" name="techs" />
                                         </div>
                                         <button className="button" type="submit" disabled={isSubmitting}>Cadastrar</button>
                                     </Form>

@@ -29,7 +29,37 @@ export function freelancerRegisterValidation() {
         cpf: Yup.string().min(11, "Documento inválido").max(14, "Documento inválido").required("Documento obrigatório"),
         city: Yup.string().min(2, "Cidade inválida").max(60, "Cidade inválida").required("Cidade obrigatória"),
         uf: Yup.string().min(2, "UF inválido").max(2, "UF inválido").required("UF obrigatório"),
+        techs: Yup.string().max(120, "Tecnologias inválidas").required("Tecnologias obrigatórias")
     });
 
     return schema;
 };
+
+export function loginValidation() {
+    const schema = Yup.object().shape({
+        login: Yup.string().min(5, "Login inválido").max(30, "Login inválido").required("Login obrigatório"),
+        password: Yup.string().min(5, "Senha inválida").max(30, "Senha inválida").required("Senha obrigatória")
+    });
+
+    return schema;
+};
+
+export function newProjectValidation() {
+    const schema = Yup.object().shape({
+        title: Yup.string().min(5, "Titulo muito curto").max(45, "Seja mais específico").required("Titulo obrigatório"),
+        description: Yup.string().min(10, "Dê mais detalhes sobre seu projeto").max(300, "Seja mais objetivo na descrição de seu projeto").required("Descrição Obrigatória")
+    });
+
+    return schema;
+}
+
+export function newOfferValidation() {
+    const schema = Yup.object().shape({
+        description: Yup.string().min(10, "Dê mais detalhes sobre sua oferta").max(300, "Seja mais objetivo na descrição de sua oferta").required("Descrição Obrigatória"),
+        price: Yup.number("Preço inválido").min(30, "O valor mínimo é 30").max(1000000, "Preço inválido").required("Preço obrigatório"),
+        start_date: Yup.string().length(10, "Data inválida.").required("Data de início obrigatória"),
+        finish_date: Yup.string().length(10, "Data inválida.").required("Data de entrega obrigatória"),
+    });
+
+    return schema;
+}

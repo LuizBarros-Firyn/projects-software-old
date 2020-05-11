@@ -6,6 +6,11 @@ import About from './pages/About';
 import Register from './pages/Register';
 import ClientRegister from './pages/ClientRegister';
 import FreelancerRegister from './pages/FreelancerRegister';
+import Login from './pages/Login';
+import Main from './pages/Main';
+import NewProject from './pages/NewProject';
+import Team from './pages/Team';
+import NewOffer from './pages/NewOffer';
 
 export default function Routes() {
     return(
@@ -16,6 +21,11 @@ export default function Routes() {
                 <Route path="/register" exact component={Register} />
                 <Route path="/register_client" component={ClientRegister} />
                 <Route path="/register_freelancer" component={FreelancerRegister} />
+                <Route path="/login" component={Login} />
+                <Route path="/main" component={Main} />
+                <Route path="/new_project" component={NewProject} />
+                <Route path="/team" component={Team} />
+                <Route path="/new_offer" component={NewOffer} />
             </Switch>
         </BrowserRouter>
     );

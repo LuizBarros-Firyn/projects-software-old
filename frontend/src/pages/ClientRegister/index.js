@@ -3,7 +3,7 @@ import api from '../../services/api';
 import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { clientRegisterValidation } from '../../validators/YupValidations.js';
+import { clientRegisterValidation } from '../../validators/YupValidations';
 import { clientRegisterInitialValues as initialValues } from '../../utils/constants'
 
 import { FiArrowLeft } from 'react-icons/fi';

@@ -11,7 +11,8 @@ export const freelancerRegisterInitialValues = {
     "age": "",
     "cpf": "",
     "city": "",
-    "uf": ""
+    "uf": "",
+    "techs": "",
 };
 
 export const clientRegisterInitialValues = { 
@@ -26,5 +27,22 @@ export const clientRegisterInitialValues = {
     "cnpj": "",
     "companyName": "",
     "city": "",
-    "uf": ""
+    "uf": "",
 };
+
+export const loginInitialValues = {
+    "login": "",
+    "password": "",
+};
+
+export const newProjectInitialValues = {
+    "title": "",
+    "description": "",
+}
+
+export const newOfferInitialValues = {
+    "description": "",
+    "price": "",
+    "start_date": "",
+    "finish_date": "",
+}
