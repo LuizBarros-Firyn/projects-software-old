@@ -11,6 +11,9 @@ import Main from './pages/Main';
 import NewProject from './pages/NewProject';
 import Team from './pages/Team';
 import NewOffer from './pages/NewOffer';
+import ProjectsOffers from './pages/ProjectsOffers';
+import OffersReview from './pages/OffersReview';
+import OngoingProjects from './pages/OngoingProjects';
 
 export default function Routes() {
     return(
@@ -26,6 +29,9 @@ export default function Routes() {
                 <Route path="/new_project" component={NewProject} />
                 <Route path="/team" component={Team} />
                 <Route path="/new_offer" component={NewOffer} />
+                <Route path="/offers" component={ProjectsOffers} />
+                <Route path="/offers_review" component={OffersReview} />
+                <Route path="/ongoing_projects" component={OngoingProjects} />
             </Switch>
         </BrowserRouter>
     );

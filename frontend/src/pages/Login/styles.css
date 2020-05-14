@@ -62,8 +62,8 @@
 
 .login-container section.info section.info-elements .content h1 {
     margin-bottom: 14px;
-    color: #e02041;
     font-size: 35px;
+    font-weight: 500;
 }
 
 .login-container section.info section.info-elements .content form {

@@ -18,6 +18,7 @@ export default function NewOffer() {
 
     useEffect(() => {
         localStorage.removeItem('projectId');
+        
         if (!userSession.user_is_freelancer) {
             alert('Acesso não autorizado.');
             history.push('/login');

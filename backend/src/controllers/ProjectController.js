@@ -17,6 +17,7 @@ module.exports = {
             user: user_id,
             title,
             description,
+            offers_quantity: 0
         });
 
         return response.json(project);

@@ -18,7 +18,7 @@ export default function FreelancerMain() {
             history.push('/login');
         }
 
-        api.get('projects_team_assignments').then(response => {
+        api.get('available_projects').then(response => {
             setProjects(response.data);
         });
         

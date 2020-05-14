@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import api from '../../../services/api';
+import api from '../../services/api';
 
-import { FiTerminal, FiPower } from 'react-icons/fi';
+import { FiTerminal, FiPower, FiArrowRight } from 'react-icons/fi';
 
 import './styles.css';
 
-export default function ClientMain() {
+export default function ProjectsOffers() {
     const [projects, setProjects] = useState([]);
     const userSession = JSON.parse(localStorage.getItem('userSession'));
 
@@ -18,7 +18,7 @@ export default function ClientMain() {
             history.push('/login');
         }
 
-        api.get('projects', {
+        api.get('projects_offers', {
             headers: {
                 user_id: userSession.user_id
             }
@@ -34,24 +34,21 @@ export default function ClientMain() {
         history.push('/login');
     }
 
+    function sendProjectInfo(projectId, projectTitle) {
+        localStorage.setItem('projectId', projectId);
+        localStorage.setItem('projectTitle', projectTitle);
+    }
+
     return(
-        <div className="client-main-container">        
+        <div className="projects-offers-container">        
             <header>
                 <div className="welcome-group">
                     <FiTerminal size={40} color="#e02041" />
                     <span>Bem vindo, {userSession.user_name}</span>
                 </div>
-                <div className="features">
-                    <Link className="button" to="/ongoing_projects" >
-                        Projetos em Andamento
-                    </Link>
-                    <Link className="button" to="/offers" >
-                        Ver Ofertas
-                    </Link>
-                    <Link className="button" to="/new_project" >
-                        Publicar um Projeto!
-                    </Link>
-                </div>
+                <Link className="button" to="/main" >
+                    Home
+                </Link>
                 <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041" />
                 </button>
@@ -64,6 +61,10 @@ export default function ClientMain() {
                         <p>{project.title}</p>
                         <strong>DESCRIÇÃO:</strong>
                         <p>{project.description}</p>
+                        <Link to="/offers_review" onClick={() => sendProjectInfo(project._id, project.title)}>
+                            <FiArrowRight size={30} color="#000" />
+                            <h3>Rever {project.offers_quantity} ofertas disponíveis para este projeto</h3>
+                        </Link>
                     </li>
                 ))}
             </ul>
