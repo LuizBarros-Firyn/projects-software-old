@@ -8,17 +8,21 @@ import './styles.css';
 
 export default function Main() {
     const userSession = JSON.parse(localStorage.getItem('userSession'));
+    const userIsAuthenticated = localStorage.getItem('user_is_authenticated');
 
     const history = useHistory();
 
     useEffect(() => {
-        if (!userSession) {
+        if (!userIsAuthenticated) {
             alert('Acesso não autorizado.');
             history.push('/login');
         }
-    }, [history, userSession]);
+    }, [history, userIsAuthenticated, userSession]);
 
-    
+    if (!userIsAuthenticated){
+        return <h1>Forbidden</h1>;
+    }
+
     if (userSession.user_is_freelancer) {
         return <FreelancerMain />
     }

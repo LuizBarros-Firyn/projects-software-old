@@ -23,7 +23,7 @@ export default function FreelancerRegister() {
             person_identifier: values.cpf,
             city: values.city,
             uf: values.uf,
-            isFreelancer: true,
+            is_freelancer: true,
             techs: values.techs
         };
 

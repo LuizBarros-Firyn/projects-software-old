@@ -28,7 +28,6 @@ export default function OffersReview() {
         }).then(response => {
             setOffers(response.data);
         });
-        
     }, [history, userSession.user_is_freelancer, userSession.user_id, projectId]);
 
     function handleLogout() {
@@ -66,7 +65,7 @@ export default function OffersReview() {
                 }
             });
 
-            history.push('/projects');
+            history.push('/ongoing_projects');
         } catch {
             alert('Erro ao deletar caso, tente novamente');
         }
@@ -99,7 +98,7 @@ export default function OffersReview() {
                         <strong>DATA DE ENTREGA:</strong>
                         <p>{offer.finish_date}</p>
                         <strong>PREÇO:</strong>
-                        <p>R$: {offer.price}0</p>
+                        <p>R$: {offer.price}</p>
                         <div className="choice-buttons">
                             <button className="button" onClick={() => handleDeleteOffer(offer._id)} style={{backgroundColor: "#e02041"}}>
                                 Recusar

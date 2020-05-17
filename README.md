@@ -1,6 +1,8 @@
 # projects-software
 Este projeto esta sendo desenvolvido como TCC para o curso Análise e Desenvolvimento de Sistemas na Universidade Positivo em Londrina. O objetivo é construir uma plataforma online de freelancing com foco em grandes projetos, auxiliada por um forte mecanismo de gamificação. 
 
+![](/github_readme_images/landing_page.png)
+
 ## Getting Started
 
 Estas instruções lhe auxiliarão a conseguir um clone funcional do projeto na sua máquina! Todos os commits entregam incrementações completas do sistema.

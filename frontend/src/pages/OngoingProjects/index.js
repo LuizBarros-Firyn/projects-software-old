@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
@@ -9,24 +9,30 @@ import './styles.css';
 export default function OngoingProjects() {
     const [projects, setProjects] = useState([]);
     const userSession = JSON.parse(localStorage.getItem('userSession'));
+    const userIsAuthenticated = localStorage.getItem('user_is_authenticated');
 
     const history = useHistory();
 
     useEffect(() => {
-        if (userSession.user_is_freelancer) {
+        if (!userIsAuthenticated) {
             alert('Acesso não autorizado.');
             history.push('/login');
         }
-
+        
         api.get('ongoing_projects', {
-            headers: {
-                user_id: userSession.user_id
+            headers: userSession.user_is_freelancer ? 
+                {
+                    team_id: userSession.user_team_id
+                }
+                :
+                {
+                    user_id: userSession.user_id
+                }
             }
-        }).then(response => {
+        ).then(response => {
             setProjects(response.data);
         });
-        
-    }, [history, userSession.user_is_freelancer, userSession.user_id]);
+    }, [history, userIsAuthenticated, userSession.user_is_freelancer, userSession.user_id, userSession.user_team_id]);
 
     function handleLogout() {
         localStorage.clear();
@@ -59,8 +65,17 @@ export default function OngoingProjects() {
                     <li key={project._id}>
                         <strong>NOME:</strong>
                         <p>{project.title}</p>
-                        <strong>EQUIPE:</strong>
-                        <p>{project.team.title}</p>
+                        {userSession.user_is_freelancer ?
+                            <Fragment>
+                                <strong>CLIENTE:</strong>
+                                <p>{project.user.name}</p>
+                            </Fragment>
+                        :
+                            <Fragment>
+                                <strong>EQUIPE:</strong>
+                                <p>{project.team.title}</p>
+                            </Fragment>
+                        }   
                         <Link to="/project_development" onClick={() => sendProjectInfo(project._id, project.title)}>
                             <FiArrowRight size={30} color="#000" />
                             <h3>Acompanhar o desenvolvimento deste projeto</h3>

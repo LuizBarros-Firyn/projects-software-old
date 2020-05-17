@@ -20,8 +20,7 @@ export default function FreelancerMain() {
 
         api.get('available_projects').then(response => {
             setProjects(response.data);
-        });
-        
+        });        
     }, [history, userSession.user_is_freelancer, userSession.user_id]);
 
     function handleLogout() {
@@ -41,9 +40,14 @@ export default function FreelancerMain() {
                     <FiTerminal size={40} color="#e02041" />
                     <span>Bem vindo, {userSession.user_name}</span>
                 </div>
-                <Link className="button" to="/new_project" >
-                    Publicar um Projeto!
-                </Link>
+                <div className="features">
+                    <Link className="button" to="/ongoing_projects" >
+                        Projetos em Andamento
+                    </Link>
+                    <Link className="button" to="/new_project" >
+                        Publicar um Projeto!
+                    </Link>
+                </div>
                 <button onClick={handleLogout} type="button">
                     <FiPower size={18} color="#E02041" />
                 </button>
@@ -52,8 +56,6 @@ export default function FreelancerMain() {
             <ul>
                 {projects.map(project => (
                     <li key={project._id}>
-                        <strong>ID:</strong>
-                        <p>{project._id}</p>
                         <strong>TITULO:</strong>
                         <p>{project.title}</p>
                         <strong>DESCRIÇÃO:</strong>

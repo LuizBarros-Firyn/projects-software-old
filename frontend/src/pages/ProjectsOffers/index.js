@@ -25,7 +25,6 @@ export default function ProjectsOffers() {
         }).then(response => {
             setProjects(response.data);
         });
-        
     }, [history, userSession.user_is_freelancer, userSession.user_id]);
 
     function handleLogout() {

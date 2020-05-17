@@ -24,7 +24,7 @@ export default function clientRegister() {
             company_name: values.companyName,
             city: values.city,
             uf: values.uf,
-            isFreelancer: false
+            is_freelancer: false
         };
 
         try {

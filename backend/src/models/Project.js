@@ -9,6 +9,7 @@ const ProjectSchema = new mongoose.Schema({
     finish_date: String,
     offers_quantity: Number,
     is_finished: Boolean,
+    is_sent_for_approval: Boolean,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
