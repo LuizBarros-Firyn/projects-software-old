@@ -9,7 +9,7 @@ import './styles.css';
 export default function OngoingProjects() {
     const [projects, setProjects] = useState([]);
     const userSession = JSON.parse(localStorage.getItem('userSession'));
-    const userIsAuthenticated = localStorage.getItem('user_is_authenticated');
+    const userIsAuthenticated = localStorage.getItem('userIsAuthenticated');
 
     const history = useHistory();
 

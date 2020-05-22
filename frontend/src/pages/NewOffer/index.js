@@ -12,7 +12,7 @@ import './styles.css'
 
 export default function NewOffer() {
     const userSession = JSON.parse(localStorage.getItem('userSession'));
-    const userIsAuthenticated = localStorage.getItem('user_is_authenticated');
+    const userIsAuthenticated = localStorage.getItem('userIsAuthenticated');
     const projectId = localStorage.getItem('projectId');
 
     const history = useHistory();
@@ -20,11 +20,11 @@ export default function NewOffer() {
     useEffect(() => {
         localStorage.removeItem('projectId');
         
-        if (!userIsAuthenticated || !userSession.user_is_freelancer) {
+        if (!userSession.user_is_freelancer || !userIsAuthenticated) {
             alert('Acesso não autorizado.');
             history.push('/login');
         }
-    }, [history, userIsAuthenticated, userSession.user_is_freelancer]);
+    });
     
     async function handleNewOffer(values) {
         const data = {

@@ -24,7 +24,7 @@ export default function Login() {
 
             if (response.data.userSession) {
                 localStorage.setItem('userSession', JSON.stringify(response.data.userSession));
-                localStorage.setItem('user_is_authenticated', true);
+                localStorage.setItem('userIsAuthenticated', true);
 
                 history.push('/main');
             } else {

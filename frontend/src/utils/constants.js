@@ -38,11 +38,20 @@ export const loginInitialValues = {
 export const newProjectInitialValues = {
     "title": "",
     "description": "",
-}
+};
 
 export const newOfferInitialValues = {
     "description": "",
     "price": "",
     "start_date": "",
     "finish_date": "",
-}
+};
+
+export const createTeamInitialValues = {
+    "title": "",
+    "description": "",
+};
+
+export const teamJoiningSolicitationInitialValues = {
+    "message": "",
+};

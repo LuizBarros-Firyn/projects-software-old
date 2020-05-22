@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 import { FiTerminal } from 'react-icons/fi';
-import officeWorker from '../../assets/office-worker.png'
+import officeWoman from '../../assets/woman_working.svg'
 import { FaFacebookSquare, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import './styles.css';
@@ -51,7 +51,7 @@ export default function Home() {
                         </a>
                     </div>
                 </section>
-                <img src={officeWorker} alt="Group" />
+                <img src={officeWoman} alt="Group" />
             </div>
         </div>
     );

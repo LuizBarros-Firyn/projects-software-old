@@ -19,10 +19,18 @@ module.exports = {
         let projects;
 
         if (user_id) // response depends on the user requesting. If the request is from a customer, their 'user_id' will come. If it's from a freelancer, their 'team_id' will come.
-            projects = await Project.find({ user: user_id, team: { $exists: true } }).populate('team', 'title').exec();
+            projects = await Project.find({ user: user_id, team: { $exists: true }, is_finished: { $ne: true } }).populate('team', 'title').exec();
         else
-            projects = await Project.find({ team: team_id }).populate('user', 'name').exec();
+            projects = await Project.find({ team: team_id, is_finished: { $ne: true } }).populate('user', 'name').exec();
 
         return response.json(projects);
+    },
+
+    async update(request, response) {
+        const { project_id } = request.params;
+
+        await Project.updateOne( { _id: project_id }, { $unset: { is_sent_for_approval: "" }, $set: { is_finished: true } } );
+
+        return response.status(204).send();
     }
 };

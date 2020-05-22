@@ -11,11 +11,12 @@ export default function OffersReview() {
     const userSession = JSON.parse(localStorage.getItem('userSession'));
     const projectId = localStorage.getItem('projectId');
     const projectTitle = localStorage.getItem('projectTitle');
+    const userIsAuthenticated = localStorage.getItem('userIsAuthenticated');
 
     const history = useHistory();
 
     useEffect(() => {
-        if (userSession.user_is_freelancer) {
+        if (userSession.user_is_freelancer || !userIsAuthenticated) {
             alert('Acesso não autorizado.');
             history.push('/login');
         }
@@ -28,7 +29,7 @@ export default function OffersReview() {
         }).then(response => {
             setOffers(response.data);
         });
-    }, [history, userSession.user_is_freelancer, userSession.user_id, projectId]);
+    });
 
     function handleLogout() {
         localStorage.clear();

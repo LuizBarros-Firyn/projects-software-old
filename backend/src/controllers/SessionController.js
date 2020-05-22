@@ -20,10 +20,8 @@ module.exports = {
             return response.json({ userSession })
         }
 
-        const team = await Team.findOne({ user: user._id });  
-
-        if (team) {
-            userSession = { user_id: user._id, user_name: user.name, user_is_freelancer: user.is_freelancer, user_has_team: true, user_team_id: team._id }
+        if (user.team) {
+            userSession = { user_id: user._id, user_name: user.name, user_is_freelancer: user.is_freelancer, user_has_team: true, user_team_id: user.team }
         } else {
             userSession = { user_id: user._id, user_name: user.name, user_is_freelancer: user.is_freelancer, user_has_team: false }
         }

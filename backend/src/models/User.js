@@ -13,7 +13,11 @@ const UserSchema = new mongoose.Schema({
     city: String,
     uf: String,
     is_freelancer: Boolean, // user type
-    techs: [String]
+    techs: [String],
+    team: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Team' 
+    },
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -36,7 +36,7 @@
     background: #e02041;
 }
 
-.project-development-container header .features a, button {
+.project-development-container header .features a, .project-development-container header .features button {
     margin-left: 20px;
 }
 

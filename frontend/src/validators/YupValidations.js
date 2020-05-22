@@ -51,7 +51,7 @@ export function newProjectValidation() {
     });
 
     return schema;
-}
+};
 
 export function newOfferValidation() {
     const schema = Yup.object().shape({
@@ -62,4 +62,21 @@ export function newOfferValidation() {
     });
 
     return schema;
-}
+};
+
+export function createTeamValidation() {
+    const schema = Yup.object().shape({
+        title: Yup.string().min(2, "Digite um nome maior").max(20, "Digite um nome mais breve.").required("Nome obrigatório!"),
+        description: Yup.string().min(15, "Digite uma descrição mais detalhada").max(400, "Digite uma descrição mais breve.").required("Descrição obrigatória!"),
+    });
+
+    return schema;
+};
+
+export function teamJoiningSolicitationValidation() {
+    const schema = Yup.object().shape({
+        message: Yup.string().min(15, "Envie uma mensagem mais elaborada").max(400, "Envie uma mensagem mais direta") // Message is not mandatory.
+    });
+
+    return schema;
+};

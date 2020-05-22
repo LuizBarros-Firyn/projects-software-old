@@ -6,15 +6,16 @@ import './styles.css';
 
 export default function Team() {
     const userSession = JSON.parse(localStorage.getItem('userSession'));
+    const userIsAuthenticated = localStorage.getItem('userIsAuthenticated');
 
     const history = useHistory();
 
     useEffect(() => {
-        if (!userSession.isFreelancer) {
+        if (!userIsAuthenticated || !userSession.user_has_team) {
             alert('Acesso não autorizado.');
             history.push('/login');
         }
-    }, [history, userSession]);
+    });
 
     function handleLogout() {
         localStorage.clear();
@@ -37,8 +38,7 @@ export default function Team() {
                     <FiLogOut size={18} color="#E02041" />
                     <span>Deslogar</span>
                 </Link>
-            </header>
-            
+            </header>    
         </div>
     );
 }

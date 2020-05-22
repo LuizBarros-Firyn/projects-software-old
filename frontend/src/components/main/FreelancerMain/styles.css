@@ -81,6 +81,11 @@
     margin-top: 12px;
 }
 
+.freelancer-main-container ul li p:last-of-type {
+    height: 84px;
+    overflow-y: scroll;
+}
+
 .freelancer-main-container ul li p + strong {
     margin-top: 32px;
 }

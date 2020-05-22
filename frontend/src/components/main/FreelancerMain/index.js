@@ -21,7 +21,7 @@ export default function FreelancerMain() {
         api.get('available_projects').then(response => {
             setProjects(response.data);
         });        
-    }, [history, userSession.user_is_freelancer, userSession.user_id]);
+    });
 
     function handleLogout() {
         localStorage.clear();
@@ -44,8 +44,8 @@ export default function FreelancerMain() {
                     <Link className="button" to="/ongoing_projects" >
                         Projetos em Andamento
                     </Link>
-                    <Link className="button" to="/new_project" >
-                        Publicar um Projeto!
+                    <Link className="button" to="/team">
+                        Equipe
                     </Link>
                 </div>
                 <button onClick={handleLogout} type="button">

@@ -11,7 +11,7 @@ export default function ProjectDevelopment() {
     const [projectMessages, setProjectMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const userSession = JSON.parse(localStorage.getItem('userSession'));
-    const userIsAuthenticated = localStorage.getItem('user_is_authenticated');
+    const userIsAuthenticated = localStorage.getItem('userIsAuthenticated');
     const projectId = localStorage.getItem('projectId');
 
     const history = useHistory();
@@ -46,6 +46,11 @@ export default function ProjectDevelopment() {
     }, [history, userIsAuthenticated, userSession.user_is_freelancer, userSession.user_id, userSession.user_team_id, projectId]);
 
     async function handleNewMessage() {
+        if (newMessage.length > 400) {
+            alert("Por favor, reduza o numero de caracteres ou divida a mensagem em duas.");
+            return;
+        }
+
         const data = {
             message: newMessage
         }
@@ -79,7 +84,15 @@ export default function ProjectDevelopment() {
     }
 
     async function handleApprove() {
-        // next commit continues from here
+        try {
+            await api.put(`ongoing_projects/${project._id}`);
+
+            alert('Aprovado com sucesso! Agradecemos por fazer negócios em nossa plataforma!');
+
+            history.push('/main');
+        } catch (error) {
+            alert("Erro ao aprovar projeto, tente mais tarde");
+        }
     }
 
     async function handleRefuse() {

@@ -6,27 +6,25 @@ import { FiTerminal, FiPower, FiArrowRight } from 'react-icons/fi';
 
 import './styles.css';
 
-export default function ProjectsOffers() {
-    const [projects, setProjects] = useState([]);
+export default function Teams() {
+    const [teams, setTeams] = useState([]);
     const userSession = JSON.parse(localStorage.getItem('userSession'));
     const userIsAuthenticated = localStorage.getItem('userIsAuthenticated');
 
     const history = useHistory();
 
     useEffect(() => {
-        if (userSession.user_is_freelancer || !userIsAuthenticated) {
+        console.log(userSession.user_has_team);
+        console.log(userIsAuthenticated);
+        if (userSession.user_has_team || !userIsAuthenticated) {
             alert('Acesso não autorizado.');
             history.push('/login');
         }
 
-        api.get('projects_offers', {
-            headers: {
-                user_id: userSession.user_id
-            }
-        }).then(response => {
-            setProjects(response.data);
-        });
-    });
+        api.get('teams').then(response => {
+            setTeams(response.data);
+        }); 
+    }, [userSession.user_has_team, userIsAuthenticated, history]);
 
     function handleLogout() {
         localStorage.clear();
@@ -34,13 +32,14 @@ export default function ProjectsOffers() {
         history.push('/login');
     }
 
-    function sendProjectInfo(projectId, projectTitle) {
-        localStorage.setItem('projectId', projectId);
-        localStorage.setItem('projectTitle', projectTitle);
+    function sendTeamInfo(teamId, teamTitle, teamOwner) {
+        localStorage.setItem('teamId', teamId);
+        localStorage.setItem('teamTitle', teamTitle);
+        localStorage.setItem('teamOwner', teamOwner);
     }
 
     return(
-        <div className="projects-offers-container">        
+        <div className="teams-container">        
             <header>
                 <div className="welcome-group">
                     <FiTerminal size={40} color="#e02041" />
@@ -53,17 +52,17 @@ export default function ProjectsOffers() {
                     <FiPower size={18} color="#E02041" />
                 </button>
             </header>
-            <h1>Projetos Publicados</h1>
+            <h1>Equipes contratando</h1>
             <ul>
-                {projects.map(project => (
-                    <li key={project._id}>
+                {teams.map(team => (
+                    <li key={team._id}>
                         <strong>NOME:</strong>
-                        <p>{project.title}</p>
-                        <strong>DESCRIÇÃO:</strong>
-                        <p>{project.description}</p>
-                        <Link to="/offers_review" onClick={() => sendProjectInfo(project._id, project.title)}>
+                        <p>{team.title}</p>
+                        <strong>DESCRIÇÃO DA EQUIPE</strong>
+                        <p>{team.description}</p>
+                        <Link to="/team_joining_solicitation" onClick={() => sendTeamInfo(team._id, team.title, team.owner)}>
                             <FiArrowRight size={30} color="#000" />
-                            <h3>Rever {project.offers_quantity} ofertas disponíveis para este projeto</h3>
+                            <h3>Solicitar entrada nesta equipe</h3>
                         </Link>
                     </li>
                 ))}
