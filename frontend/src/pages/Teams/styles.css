@@ -47,6 +47,33 @@
     margin-bottom: 24px;
 }
 
+.teams-container .no-results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.teams-container .no-results img {
+    width: 700px;
+    height: 400px;
+}
+
+.teams-container .no-results h1 {
+    color: #000;
+    line-height: 21px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.teams-container .no-results h1:last-of-type {
+    margin-top: 50px;
+}
+
 .teams-container ul {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

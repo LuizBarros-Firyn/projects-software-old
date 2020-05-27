@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
+import NoResults from '../../assets/no_results.svg';
 import { FiTerminal, FiPower } from 'react-icons/fi';
 
 import './styles.css';
@@ -29,7 +30,7 @@ export default function OffersReview() {
         }).then(response => {
             setOffers(response.data);
         });
-    });
+    }, [history, projectId, userIsAuthenticated, userSession.user_id, userSession.user_is_freelancer]);
 
     function handleLogout() {
         localStorage.clear();
@@ -87,6 +88,13 @@ export default function OffersReview() {
                 </button>
             </header>
             <h1>Propostas referentes ao projeto: {projectTitle}</h1>
+            {offers.length <= 0 &&
+                <div className="no-results">
+                    <h1>Ainda não foi feita nenhuma oferta para este projeto!</h1>
+                    <img src={NoResults} alt="No Projects Found" />
+                    <h1>Tente voltar mais tarde!</h1>
+                </div>
+            }
             <ul>
                 {offers.map(offer => (
                     <li key={offer._id}>

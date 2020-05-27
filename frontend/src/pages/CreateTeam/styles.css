@@ -12,7 +12,6 @@
 .create-team-container .content {
     width: 100%;
     padding: 96px;
-    background: #f0f0f5;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     display: flex;
@@ -65,12 +64,27 @@
     margin-top: 8px;
 }
 
+.create-team-container .content form .dropdown {
+    margin-top: 8px;
+    width: 100%;
+    height: 60px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 24px;
+    font-size: 18px;
+}
+
 .create-team-container .content form .error-messages {
     margin-top: 6px;
     width: 100%;
     padding: 0 10px;
     color: red;
 }
+
+.create-team-container .content form .failed-field {
+    border-color: #e02041;
+} 
 
 .create-team-container .content form .button {
     margin-top: 20px;

@@ -43,6 +43,15 @@
     line-height: 32px;
 }
 
+.new-project-container .content section a {
+    width: fit-content;
+    transition: 0.5s;
+}
+
+.new-project-container .content section a:hover {
+    filter: opacity(70%);
+}
+
 .new-project-container .content section a span {
     margin-left: 12px;
 }
@@ -61,6 +70,10 @@
     width: 100%;
     padding: 0 10px;
     color: red;
+}
+
+.new-project-container .content form .failed-field {
+    border-color: #e02041;
 }
 
 .new-project-container .content form .button {

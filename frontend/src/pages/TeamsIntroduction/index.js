@@ -41,7 +41,7 @@ export default function TeamsIntroduction() {
                     <img src={Team} alt="Team"/>
                 </section>
                 <section className="info">
-                    <p>Na plataforma Freeler, você pode se juntar a outros profissionais qualificados e trabalhar em conjunto para desenvolver grandes projetos.</p>
+                    <p>Na plataforma Projects, você pode se juntar a outros profissionais qualificados e trabalhar em conjunto para desenvolver grandes projetos.</p>
                     <Link to="/create_team" className="button">Criar sua própia equipe</Link>
                     <Link to="/teams" className="button">Entrar em uma equipe</Link>
                 </section>

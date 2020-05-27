@@ -47,11 +47,15 @@ export const newOfferInitialValues = {
     "finish_date": "",
 };
 
-export const createTeamInitialValues = {
+export const teamInfoInitialValues = {
     "title": "",
     "description": "",
 };
 
 export const teamJoiningSolicitationInitialValues = {
     "message": "",
+};
+
+export const bugReportInitialValues = {
+    "description": "",
 };

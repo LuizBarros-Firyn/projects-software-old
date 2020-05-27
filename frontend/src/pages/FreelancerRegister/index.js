@@ -1,6 +1,6 @@
 import React from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import { freelancerRegisterValidation } from '../../validators/YupValidations';
@@ -11,6 +11,8 @@ import { FiArrowLeft } from 'react-icons/fi';
 import './styles.css';
 
 export default function FreelancerRegister() {
+    const history = useHistory(); 
+
     async function handleFreelancerRegister(values){
         const data = {
             name: values.firstName.trim() + " " + values.lastName.trim(),
@@ -28,9 +30,16 @@ export default function FreelancerRegister() {
         };
 
         try {
-            const user = await api.post('users', data);
-            
-            alert(`Seja bem vindo, ${user.data.name}`);
+            await api.post('users', data).then(response => {
+                const userSession = { user_id: response.data._id, user_name: response.data.name, user_is_freelancer: response.data.is_freelancer, user_has_team: false }
+
+                localStorage.setItem('userSession', JSON.stringify(userSession));
+                localStorage.setItem('userIsAuthenticated', true);
+    
+                alert(`Seja bem vindo, ${response.data.name}`);
+            });
+
+            history.push('/main');
         } catch (error) {
             alert('Erro no cadastro, tente novamente.');
         }

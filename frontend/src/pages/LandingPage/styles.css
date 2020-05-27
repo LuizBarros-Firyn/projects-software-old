@@ -19,10 +19,20 @@
     transition: 0.3s;
 }
 
+.landing-page-container header .header-links a + a {
+    margin-left: 25px;
+    border-color: #e02041;
+    color: #e02041;
+}
+
 .landing-page-container header .header-links a:hover {
     filter: brightness(90%);
     background-color: #44afe5;
     color: #FFF; 
+}
+
+.landing-page-container header .header-links a+a:hover {
+    background-color: #e02041;
 }
 
 

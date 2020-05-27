@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import api from '../../../services/api';
 
+import NoProjectsFound from '../../../assets/no_projects_found.svg';
 import { FiTerminal, FiPower } from 'react-icons/fi';
 
 import './styles.css';
@@ -25,7 +26,7 @@ export default function ClientMain() {
         }).then(response => {
             setProjects(response.data);
         });
-    });
+    }, [history, userSession.user_is_freelancer, userSession.user_id]);
 
     function handleLogout() {
         localStorage.clear();
@@ -56,6 +57,15 @@ export default function ClientMain() {
                 </button>
             </header>
             <h1>Projetos Publicados</h1>
+            {projects.length <= 0 &&
+                <div className="projects-not-found">
+                    <h1>Você ainda não publicou nenhum projeto!</h1>
+                    <img src={NoProjectsFound} alt="No Projects Found" />
+                    <Link className="button" to="/new_project" >
+                        Publicar seu primeiro projeto!
+                    </Link>
+                </div>
+            }
             <ul>
                 {projects.map(project => (
                     <li key={project._id}>

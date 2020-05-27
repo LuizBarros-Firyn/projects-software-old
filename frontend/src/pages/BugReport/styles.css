@@ -1,4 +1,4 @@
-.new-offer-container {
+.bug-report-container {
     width: 100%;
     max-width: 1120px;
     height: 100vh;
@@ -9,7 +9,7 @@
     justify-content: center;
 }
 
-.new-offer-container .content {
+.bug-report-container .content {
     width: 100%;
     padding: 96px;
     background: #f0f0f5;
@@ -20,54 +20,65 @@
     align-items: center;
 }
 
-.new-offer-container .content .page-welcome {
+.bug-report-container .content .page-welcome {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 40px;
 }
 
-.new-offer-container .content section {
+.bug-report-container .content section {
     width: 100%;
     max-width: 380px;
 }
 
-.new-offer-container .content section h1 {
+.bug-report-container .content section h1 {
     font-size: 32px;
     margin-left: 12px;
 }
 
-.new-offer-container .content section p {
+.bug-report-container .content section p {
     font-size: 18;
     color: #737380;
     line-height: 32px;
 }
 
-.new-offer-container .content section a span {
+.bug-report-container .content section a span {
     margin-left: 12px;
 }
 
-.new-offer-container .content form {
+.bug-report-container .content form {
     width: 100%;
     max-width: 450px;
 }
 
-.new-offer-container .content form input, .new-offer-container .content form textarea {
+.bug-report-container .content form input, .bug-report-container .content form textarea {
     margin-top: 8px;
 }
 
-.new-offer-container .content form .error-messages {
+.bug-report-container .content form .dropdown {
+    margin-top: 8px;
+    width: 100%;
+    height: 60px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 0 24px;
+    font-size: 18px;
+}
+
+.bug-report-container .content form .error-messages {
     margin-top: 6px;
     width: 100%;
     padding: 0 10px;
     color: red;
 }
 
-.new-offer-container .content form .failed-field {
+.bug-report-container .content form .failed-field {
     border-color: #e02041;
 }
 
-.new-offer-container .content form .button {
+.bug-report-container .content form .button {
     margin-top: 20px;
     background-color: #e02041;
 }

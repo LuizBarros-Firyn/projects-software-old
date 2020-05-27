@@ -12,7 +12,6 @@ module.exports = {
     async store(request, response) {
         const { name, login, password, age, email, person_identifier, company_name, city, uf, is_freelancer, techs } = request.body
         
-
         const user = await User.create({
             name,
             login,

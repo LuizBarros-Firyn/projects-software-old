@@ -12,7 +12,7 @@ module.exports = {
         return response.json(project);
     },
 
-    async delete(request, response) {
+    async delete(request, response) { // delete here means refusal
         const { project_id } = request.params;
 
         const project = await Project.findOneAndUpdate( { _id: project_id }, { is_sent_for_approval: false } ).

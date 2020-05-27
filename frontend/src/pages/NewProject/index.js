@@ -69,7 +69,7 @@ export default function NewProject() {
                                 <div className="error-messages">
                                     <ErrorMessage component="span" name="title" />
                                 </div>
-                                <Field placeholder="Descrição" name="description" className={errors.description && touched.description && "failed-field"} />
+                                <Field component="textarea" placeholder="Descrição do projeto" name="description" className={errors.description && touched.description && "failed-field"} />
                                 <div className="error-messages">
                                     <ErrorMessage component="span" name="description" />
                                 </div>

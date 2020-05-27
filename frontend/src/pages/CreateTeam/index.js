@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage,   } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import api from '../../services/api';
 
-import { createTeamValidation } from '../../validators/YupValidations';
-import { createTeamInitialValues as initialValues } from '../../utils/constants'
+import { teamInfoValidation } from '../../validators/YupValidations';
+import { teamInfoInitialValues as initialValues } from '../../utils/constants';
 
 import { FiArrowLeft, FiTerminal } from 'react-icons/fi';
 
@@ -16,6 +16,8 @@ export default function CreateTeam() {
 
     const history = useHistory();
 
+    const [isHiring, setIsHiring] = useState(true);
+
     useEffect(() => {
         if (!userIsAuthenticated || !userSession.user_is_freelancer) {
             alert('Acesso não autorizado.');
@@ -24,9 +26,12 @@ export default function CreateTeam() {
     });
     
     async function handleCreateTeam(values) {
+
+
         const data = {
             title: values.title,
-            description: values.description
+            description: values.description,
+            is_hiring: isHiring
         };
 
         try {
@@ -55,13 +60,13 @@ export default function CreateTeam() {
                         <FiTerminal size={40} color="#e02041"/>
                         <h1>Crie sua equipe!</h1>
                     </div>
-                    <p>Crie sua equipe e chame os melhores profissionais para trabalhar com você!</p>
+                    <p>Crie sua equipe e chame os melhores profissionais para trabalhar com você! Você pode alterar estas configurações a qualquer momento.</p>
                     <Link className="back-link" to="/main">
                         <FiArrowLeft size={16} color="#E02041" />
                         <span>Voltar</span>
                     </Link>
                 </section>
-                <Formik initialValues={initialValues} onSubmit={handleCreateTeam} validationSchema={createTeamValidation}>
+                <Formik initialValues={initialValues} onSubmit={handleCreateTeam} validationSchema={teamInfoValidation}>
                     { props => {
                         const {
                             touched, errors, isSubmitting
@@ -77,6 +82,10 @@ export default function CreateTeam() {
                                 <div className="error-messages">
                                     <ErrorMessage component="span" name="description" />
                                 </div>
+                                <select className="dropdown" value={isHiring} onChange={e => setIsHiring(e.target.value)}>
+                                    <option value={true}>Receber solicitações de entrada na equipe</option>
+                                    <option value={false}>Não receber solicitações de entrada na equipe</option>
+                                </select>
                                 <button className="button" type="submit" disabled={isSubmitting}>Cadastrar</button>
                             </Form>
                         )

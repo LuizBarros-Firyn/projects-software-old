@@ -54,6 +54,33 @@
     margin-bottom: 24px;
 }
 
+.client-main-container .projects-not-found {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.client-main-container .projects-not-found img {
+    width: 700px;
+    height: 400px;
+}
+
+.client-main-container .projects-not-found h1 {
+    color: #000;
+    line-height: 21px;
+    margin-top: 5px;
+}
+
+.client-main-container .projects-not-found a {
+    width: 260px;
+    background-color: #e02041;
+    margin-top: 40px;
+}
+
 .client-main-container ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

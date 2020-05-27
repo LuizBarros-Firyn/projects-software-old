@@ -64,7 +64,7 @@ export function newOfferValidation() {
     return schema;
 };
 
-export function createTeamValidation() {
+export function teamInfoValidation() {
     const schema = Yup.object().shape({
         title: Yup.string().min(2, "Digite um nome maior").max(20, "Digite um nome mais breve.").required("Nome obrigatório!"),
         description: Yup.string().min(15, "Digite uma descrição mais detalhada").max(400, "Digite uma descrição mais breve.").required("Descrição obrigatória!"),
@@ -76,6 +76,15 @@ export function createTeamValidation() {
 export function teamJoiningSolicitationValidation() {
     const schema = Yup.object().shape({
         message: Yup.string().min(15, "Envie uma mensagem mais elaborada").max(400, "Envie uma mensagem mais direta") // Message is not mandatory.
+    });
+
+    return schema;
+};
+
+export function bugReportValidation() {
+    const schema = Yup.object().shape({
+        description: Yup.string().min(10, "Por favor, forneça mais detalhes").max(500, "Por favor, descreva o erro de forma mais específica").required("A descrição do erro é obrigatória"),
+        found_error_page: Yup.string().min(3, "Página inválida").max(30, "Página inválida").required("A página do erro é obrigatória")
     });
 
     return schema;

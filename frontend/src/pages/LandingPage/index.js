@@ -15,6 +15,9 @@ export default function Home() {
                     <Link className="button" to="/about">
                         Sobre
                     </Link>
+                    <Link className="button" to="/bug_report">
+                        Relatar erro
+                    </Link>
                 </div>
                 <div className="header-buttons">
                     <Link className="button" to="/register">

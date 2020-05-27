@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
+import NoResults from '../../assets/no_results.svg';
 import { FiTerminal, FiPower, FiArrowRight } from 'react-icons/fi';
 
 import './styles.css';
@@ -53,6 +54,13 @@ export default function Teams() {
                 </button>
             </header>
             <h1>Equipes contratando</h1>
+            {teams.length <= 0 &&
+                <div className="no-results">
+                    <h1>Ainda não há nenhuma equipe contratando!</h1>
+                    <img src={NoResults} alt="No Projects Found" />
+                    <h1>Tente voltar mais tarde!</h1>
+                </div>
+            }
             <ul>
                 {teams.map(team => (
                     <li key={team._id}>

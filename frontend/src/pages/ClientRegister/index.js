@@ -1,6 +1,6 @@
 import React from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 import { clientRegisterValidation } from '../../validators/YupValidations';
@@ -10,7 +10,9 @@ import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
 
-export default function clientRegister() {
+export default function ClientRegister() {
+    const history = useHistory();
+
     async function handleClientRegister(values){
         const data = {
             name: values.firstName.trim() + " " + values.lastName.trim(),
@@ -21,16 +23,23 @@ export default function clientRegister() {
             email: values.email,
             photo: '',
             person_identifier: values.cnpj,
-            company_name: values.companyName,
+            company_name: values.companyName,   
             city: values.city,
             uf: values.uf,
             is_freelancer: false
         };
 
         try {
-            const user = await api.post('users', data);
-            
-            alert(`Seja bem vindo, ${user.data.name}`);
+            await api.post('users', data).then(response => {
+                const userSession = { user_id: response.data._id, user_name: response.data.name, user_is_freelancer: response.data.is_freelancer }
+    
+                localStorage.setItem('userSession', JSON.stringify(userSession));
+                localStorage.setItem('userIsAuthenticated', true);
+    
+                alert(`Seja bem vindo, ${response.data.name}`);
+            });
+
+            history.push('/main'); 
         } catch (error) {
             alert('Erro no cadastro, tente novamente.');
         }
@@ -93,7 +102,7 @@ export default function clientRegister() {
                                                 <ErrorMessage component="span" name="email" />
                                             </div>
                                         </div>
-                                        <Field placeholder="CNPJ" name="cnpj" className={errors.cnpj && touched.cnpj && "failed-field"} />
+                                        <Field placeholder="Documento de identificação (CPF/CNPJ)" name="cnpj" className={errors.cnpj && touched.cnpj && "failed-field"} />
                                         <div className="error-messages">
                                             <ErrorMessage component="span" name="cnpj" />
                                         </div>

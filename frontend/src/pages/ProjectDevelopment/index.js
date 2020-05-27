@@ -167,7 +167,7 @@ export default function ProjectDevelopment() {
                                                 <p>{projectMessage.message}</p>
                                             </div>
                                         </Fragment>
-                                        :
+                                    :
                                         <Fragment>
                                             <div className="interlocutor-messages">
                                                 <strong>{project.user.name}</strong>

@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
 
+import NoProjectsFound from '../../assets/no_projects_found.svg';
 import { FiTerminal, FiPower, FiArrowRight } from 'react-icons/fi';
 
 import './styles.css';
@@ -60,6 +61,13 @@ export default function OngoingProjects() {
                 </button>
             </header>
             <h1>Projetos Publicados</h1>
+            {projects.length <= 0 &&
+                <div className="projects-not-found">
+                    <h1>Ainda não há projetos em andamento! =(</h1>
+                    <img src={NoProjectsFound} alt="No Projects Found" />
+                    <h1>Faça propostas aos projetos e aguarde até que suas ofertas sejam aceitas!</h1>
+                </div>
+            }
             <ul>
                 {projects.map(project => (
                     <li key={project._id}>

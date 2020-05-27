@@ -39,7 +39,7 @@ export default function Login() {
         <div className="login-container">
             <section className="info">
             <header>
-                    <Link to="/register">
+                    <Link to="/">
                         <FiArrowLeft size={30} color="#e02041" />
                         <text>Voltar</text>
                     </Link>
